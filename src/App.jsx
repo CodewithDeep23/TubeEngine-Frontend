@@ -1,14 +1,26 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./index.css";
+import axios from './helpers/axiosClient.js'
 
 function App() {
-  const [count, setCount] = useState(0);
+  useEffect(() => {
+    const checkout = async () => {
+      try {
+        const res = await axios.get('/healthcheck');
+        console.log("hello")
+        console.log('Backend connected ✅', res.data);
+        alert('Backend Connected ✅');
+      } catch (error) {
+        console.log('Backend connection failed ❌', error.message);
+        alert('Backend Not Connected ❌');
+      }
+    }
+    checkout();
+  }, []);
 
   return (
-    <div className="flex items-center justify-center min-h-screen bg-gradient-to-br from-blue-400 to-purple-600">
-      <h1 className="text-4xl font-bold text-white bg-red-300">
-        Hello, Tailwind + Vite + React 🚀
-      </h1>
+    <div className="App">
+      <h1>My React App</h1>
     </div>
   );
 }
