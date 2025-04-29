@@ -3,7 +3,8 @@ import { authSlice } from './Slices/authSlice';
 import { userSlice } from './Slices/userSlice';
 import { darkModeSlice } from './Slices/themeSlice';
 import { videoSlice } from './Slices/videoSlice';
-import { subscriptionSlice } from './Slices/subscription'
+import { subscriptionSlice } from './Slices/subscription';
+import { likeSlice } from './Slices/likeSlice';
 
 export const store = configureStore({
     reducer: {
@@ -11,6 +12,7 @@ export const store = configureStore({
         user: userSlice,
         darkMode: darkModeSlice,
         video: videoSlice,
-        subscription: subscriptionSlice
+        subscription: subscriptionSlice,
+        like: likeSlice
     }
 })
