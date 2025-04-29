@@ -5,6 +5,8 @@ import Logo from './Atoms/Logo'
 import PageNotFound from './Atoms/PageNotFound'
 import LogoutBtn from './Atoms/LogoutBttn'
 import LoginPopup from './Auth/LoginPopup.jsx'
+import ChannelProfile from './Atoms/ChannelProfile.jsx'
+import LikesComponents from './Atoms/LikesComponents.jsx'
 
 
 export {
@@ -14,5 +16,7 @@ export {
     Logo,
     PageNotFound,
     LogoutBtn,
-    LoginPopup
+    LoginPopup,
+    ChannelProfile,
+    LikesComponents
 }
