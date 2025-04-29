@@ -5,20 +5,29 @@ import { toast } from 'react-toastify';
 
 const initialState = {
     loading: false,
-    likedVideos: [],
-    likedComments: [],
-    likedTweets: [],
-    videoLikeStatus: {},
-    commentLikeStatus: {},
-    tweetLikeStatus: {}
+    status: false,
+    data: null
 };
+
+// toggle like
+export const toggleLike = createAsyncThunk("like/toggleLike",
+    async ({ qs, toggleLike }) => {
+        try {
+            const response = await axios.patch(`likes?toggleLike=${toggleLike}&${qs}`);
+            return response.data.data
+        } catch (error) {
+            toast.error(parseError(error.response.data));
+            console.log(error);
+        }
+    }
+)
 
 // toggle video likes
 export const toggleVideoLike = createAsyncThunk("like/toggleVideoLike",
     async (videoId) => {
         try {
             const response = await axios.patch(`likes/video/${videoId}`);
-            return {videoId, ...response.data.data}
+            return response.data.data
         } catch (error) {
             toast.error(parseError(error.response.data));
             throw error;
@@ -31,7 +40,7 @@ export const toggleCommentLike = createAsyncThunk("like/toggleCommentLike",
         try {
             const response = await axios.patch(`likes/comment/${commentId}?toggleLike=${toggleLike}`);
 
-            return { commentId, ...response.data.data };
+            return response.data.data
         } catch (error) {
             toast.error(parseError(error.response.data))
             throw error;
@@ -73,42 +82,63 @@ const likeSlice = createSlice({
         })
         builder.addCase(toggleVideoLike.fulfilled, (state, action) => {
             state.loading = false;
-            const { videoId, ...likeStatus } = action.payload;
-            state.videoLikeStatus[videoId] = likeStatus;
+            state.data = action.payload;
+            state.status = true;
         })
         builder.addCase(toggleVideoLike.rejected, (state) => {
             state.loading = false;
+            state.status = false;
         })
 
         // toggleCommentLike
         builder.addCase(toggleCommentLike.pending, (state) => {
             state.loading = true;
+            state.data = null;
         })
         builder.addCase(toggleCommentLike.fulfilled, (state, action) => {
             state.loading = false;
-            const { commentId, ...likeStatus } = action.payload;
-            state.commentLikeStatus[commentId] = likeStatus;
+            state.data = action.payload;
+            state.status = true;
         })
         builder.addCase(toggleCommentLike.rejected, (state) => {
             state.loading = false;
+            state.status = false;
         })
 
         // toggleTweetLike
         builder.addCase(toggleTweetLike.pending, (state) => {
             state.loading = true;
+            state.data = null;
         })
         builder.addCase(toggleTweetLike.fulfilled, (state, action) => {
             state.loading = false;
-            const { tweetId, ...likeStatus } = action.payload;
-            state.tweetLikeStatus[tweetId] = likeStatus;
+            state.data = action.payload;
+            state.status = true;
         })
         builder.addCase(toggleTweetLike.rejected, (state) => {
             state.loading = false;
+            state.status = false;
         })
+
+        // toggleLike
+        builder.addCase(toggleLike.pending, (state) => {
+            state.loading = true;
+            state.data = null;
+        });
+        builder.addCase(toggleLike.fulfilled, (state, action) => {
+            state.loading = false;
+            state.data = action.payload;
+            state.status = true;
+        });
+        builder.addCase(toggleLike.rejected, (state) => {
+            state.loading = false;
+            state.status = false;
+        });
 
         // get liked videos
         builder.addCase(getLikedVideos.pending, (state) => {
             state.loading = true;
+            state.data = null;
         })
         builder.addCase(getLikedVideos.fulfilled, (state, action) => {
             state.loading = false;
@@ -116,6 +146,7 @@ const likeSlice = createSlice({
         })
         builder.addCase(getLikedVideos.rejected, (state) => {
             state.loading = false;
+            state.status = false;
         })
 
     }

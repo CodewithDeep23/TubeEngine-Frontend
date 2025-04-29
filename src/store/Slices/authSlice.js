@@ -3,7 +3,7 @@ import { axios } from '../../helpers/axiosClient'
 import { toast } from "react-toastify";
 import { parseError } from "../../helpers/errorParser";
 
-initialState = {
+const initialState = {
     loading: false,
     status: false,
     userData: {}
