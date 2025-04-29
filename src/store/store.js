@@ -8,6 +8,7 @@ import { likeSlice } from './Slices/likeSlice';
 import { commentSlice } from './Slices/commentSlice';
 import { playlistSlice } from './Slices/playlistSlice';
 import { tweetSlice } from './Slices/tweetSlice';
+import { dashboardSlice } from './Slices/dashboardSlice';
 
 export const store = configureStore({
     reducer: {
@@ -20,5 +21,6 @@ export const store = configureStore({
         comment: commentSlice,
         playlist: playlistSlice,
         tweet: tweetSlice,
+        dashboard: dashboardSlice,
     }
 })
