@@ -41,6 +41,12 @@ import GuestTweet from './GuestPages/GuestTweet.jsx'
 import ChangePassword from './Settings/ChangePassword.jsx'
 import EditChannelInfo from './Settings/EditChannelInfo.jsx'
 import EditPersonalInfo from './Settings/EditPersonalInfo.jsx'
+import EmptyChannelVideo from './Video/EmptyChannelVideo.jsx'
+import MyChannelEmptyVideo from './Video/MyChannelEmptyVideo.jsx'
+import ChannelVideos from './Video/ChannelVideos.jsx'
+import EmptyVideo from './Video/EmptyVideo.jsx'
+import VideoGrid from './Video/VideoGrid.jsx'
+import VideoList from './Video/VideoList.jsx'
 
 export {
     Button,
@@ -85,5 +91,11 @@ export {
     GuestTweet,
     ChangePassword,
     EditChannelInfo,
-    EditPersonalInfo
+    EditPersonalInfo,
+    EmptyChannelVideo,
+    MyChannelEmptyVideo,
+    EmptyVideo,
+    ChannelVideos,
+    VideoGrid,
+    VideoList
 }
