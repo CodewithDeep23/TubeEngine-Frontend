@@ -108,6 +108,20 @@ export const updatePlaylist = createAsyncThunk("playlist/updatePlaylist",
     }
 );
 
+// get current playlist:
+export const getCurrentPlaylists = createAsyncThunk(
+    "playlist/getCurrentPlaylists",
+    async (videoId) => {
+      try {
+        const response = await axios.get(`/playlists/user/playlists/${videoId}`);
+        return response.data.data;
+      } catch (error) {
+        toast.error(parseError(error.response.data));
+        console.log(error);
+        throw error;
+      }
+    }
+);
 
 const playlistSlice = createSlice({
     name: "playlist",
@@ -185,6 +199,21 @@ const playlistSlice = createSlice({
             state.loading = false;
             state.status = false;
         });
+
+        // get Current Playlists
+        builder.addCase(getCurrentPlaylists.pending, (state) => {
+            state.loading = true;
+            state.data = null;
+        });
+        builder.addCase(getCurrentPlaylists.fulfilled, (state, action) => {
+            state.loading = false;
+            state.data = action.payload;
+            state.status = true;
+        });
+        builder.addCase(getCurrentPlaylists.rejected, (state) => {
+            state.loading = false;
+            state.status = false;
+        });  
     },
 });
 

@@ -51,6 +51,8 @@ import Aside from './Aside.jsx'
 import Home from './Home.jsx'
 import Header from './Header/Header.jsx'
 import AdminPanelVideos from './Dashboard/AdminPanelVideos.jsx'
+import Comments from './Comment/Comments.jsx'
+import VideoPlayer from './Atoms/VideoPlayer.jsx'
 
 export {
     Button,
@@ -105,5 +107,7 @@ export {
     Aside,
     Home,
     Header,
-    AdminPanelVideos
+    AdminPanelVideos,
+    Comments,
+    VideoPlayer
 }
