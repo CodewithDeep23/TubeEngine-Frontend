@@ -37,7 +37,7 @@ import GuestLikedVideos from './GuestPages/GuestLikedVideos.jsx'
 import GuestMyChannel from './GuestPages/GuestMyChannel.jsx'
 import GuestSubscribers from './GuestPages/GuestSubscribers.jsx'
 import GuestSubscription from './GuestPages/GuestSubscription.jsx'
-import GuestTweet from './GuestPages/GuestTweet.jsx'
+import GuestTweets from './GuestPages/GuestTweet.jsx'
 import ChangePassword from './Settings/ChangePassword.jsx'
 import EditChannelInfo from './Settings/EditChannelInfo.jsx'
 import EditPersonalInfo from './Settings/EditPersonalInfo.jsx'
@@ -53,6 +53,15 @@ import Header from './Header/Header.jsx'
 import AdminPanelVideos from './Dashboard/AdminPanelVideos.jsx'
 import Comments from './Comment/Comments.jsx'
 import VideoPlayer from './Atoms/VideoPlayer.jsx'
+import ChannelPlaylist from './Playlist/ChannelPlaylist.jsx'
+import ChannelSubscribed from './Subscription/ChannelSubscribed.jsx'
+import ChannelTweets from './Tweet/ChannelTweet.jsx'
+import Feed from './Feed.jsx'
+import Login from './Auth/Login.jsx'
+import SignUp from './Auth/Signup.jsx'
+import VideoDetail from '../pages/VideoDetail.jsx'
+import PlaylistVideos from './Playlist/PlaylistVideos.jsx'
+import AuthLayout from './Auth/AuthLayout.jsx'
 
 export {
     Button,
@@ -94,7 +103,7 @@ export {
     GuestMyChannel,
     GuestSubscribers,
     GuestSubscription,
-    GuestTweet,
+    GuestTweets,
     ChangePassword,
     EditChannelInfo,
     EditPersonalInfo,
@@ -109,5 +118,14 @@ export {
     Header,
     AdminPanelVideos,
     Comments,
-    VideoPlayer
+    VideoPlayer,
+    ChannelPlaylist,
+    ChannelSubscribed,
+    ChannelTweets,
+    Feed,
+    Login,
+    SignUp,
+    VideoDetail,
+    PlaylistVideos,
+    AuthLayout
 }

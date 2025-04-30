@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from "react";
-import { Button, LikesComponent } from "../index";
+import { Button, LikesComponents } from "../index";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { formatTimestamp } from "../../helpers/formatFig";
@@ -87,7 +87,7 @@ function Comment({ comment, videoId, ownerAvatar = "" }) {
           <span
             className={`flex items-center overflow-hidden rounded-lg max-w-fit h-fit text-xs relative`}
           >
-            <LikesComponent
+            <LikesComponents
               commentId={comment._id}
               isLiked={comment.isLiked}
               totalLikes={comment.likesCount}
