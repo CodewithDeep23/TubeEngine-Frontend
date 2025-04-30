@@ -8,6 +8,7 @@ import LoginPopup from './Auth/LoginPopup.jsx'
 import ChannelProfile from './Atoms/ChannelProfile.jsx'
 import LikesComponents from './Atoms/LikesComponents.jsx'
 import CommentLike from './Comment/CommentLike.jsx'
+import CommentAtom from './Comment/CommentAtom.jsx'
 
 export {
     Button,
@@ -19,5 +20,6 @@ export {
     LoginPopup,
     ChannelProfile,
     LikesComponents,
-    CommentLike
+    CommentLike,
+    CommentAtom
 }
