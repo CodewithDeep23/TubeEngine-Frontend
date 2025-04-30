@@ -50,6 +50,7 @@ import VideoList from './Video/VideoList.jsx'
 import Aside from './Aside.jsx'
 import Home from './Home.jsx'
 import Header from './Header/Header.jsx'
+import AdminPanelVideos from './Dashboard/AdminPanelVideos.jsx'
 
 export {
     Button,
@@ -103,5 +104,6 @@ export {
     VideoList,
     Aside,
     Home,
-    Header
+    Header,
+    AdminPanelVideos
 }
