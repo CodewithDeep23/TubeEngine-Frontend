@@ -134,6 +134,19 @@ export const getWatchHistory = createAsyncThunk("auth/getWatchHistory", async ()
     }
 })
 
+// Clear Watch History
+export const clearWatchHistory = createAsyncThunk("user/clearWatchHistory", async () => {
+    try {
+      const response = await axios.delete(`/users/history`);
+      toast.success(response.data.message);
+      return response.data.data;
+    } catch (error) {
+      toast.error(parseError(error.response.data));
+      console.log(error);
+      throw error;
+    }
+});
+
 // user playlist
 export const getUserPlaylist = createAsyncThunk("auth/getUserPlaylist", async () => {
     try {
@@ -251,6 +264,18 @@ const authSlice = createSlice({
             state.userData.watchHistory = action.payload;
         });
         builder.addCase(getWatchHistory.rejected, (state) => {
+            state.loading = false;
+        });
+
+        // clear WatchHistory
+        builder.addCase(clearWatchHistory.pending, (state) => {
+            state.loading = true;
+        });
+        builder.addCase(clearWatchHistory.fulfilled, (state, action) => {
+            state.loading = false;
+            state.userData.watchHistory = [];
+        });
+        builder.addCase(clearWatchHistory.rejected, (state) => {
             state.loading = false;
         });
 
