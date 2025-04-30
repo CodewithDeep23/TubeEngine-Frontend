@@ -9,6 +9,10 @@ import ChannelProfile from './Atoms/ChannelProfile.jsx'
 import LikesComponents from './Atoms/LikesComponents.jsx'
 import CommentLike from './Comment/CommentLike.jsx'
 import CommentAtom from './Comment/CommentAtom.jsx'
+import EmptyPlaylist from './Playlist/EmptyPlaylist.jsx'
+import MyChannelEmptyPlaylist from './Playlist/MyChannelEmptyPlaylist.jsx'
+import PlaylistVideoAtom from './Playlist/PlaylistVideoAtom.jsx'
+import PlaylistForm from './Playlist/PlaylistForm.jsx'
 
 export {
     Button,
@@ -21,5 +25,9 @@ export {
     ChannelProfile,
     LikesComponents,
     CommentLike,
-    CommentAtom
+    CommentAtom,
+    EmptyPlaylist,
+    MyChannelEmptyPlaylist,
+    PlaylistVideoAtom,
+    PlaylistForm
 }
