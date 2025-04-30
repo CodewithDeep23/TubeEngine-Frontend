@@ -1,6 +1,6 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from '../../helpers/axiosClient';
-import parseError from '../../helpers/errorParser';
+import {parseError} from '../../helpers/errorParser';
 import { toast } from 'react-toastify';
 
 

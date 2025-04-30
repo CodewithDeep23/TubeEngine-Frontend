@@ -1,5 +1,5 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import { axios } from '../../helpers/axiosClient'
+import axios from '../../helpers/axiosClient'
 import { toast } from "react-toastify";
 import { parseError } from "../../helpers/errorParser";
 
@@ -90,15 +90,15 @@ const tweetSlice = createSlice({
         });
 
         // get User tweet
-        builder.addCase(getTweet.pending, (state) => {
+        builder.addCase(getUserTweet.pending, (state) => {
             state.loading = true;
         });
-        builder.addCase(getTweet.fulfilled, (state, action) => {
+        builder.addCase(getUserTweet.fulfilled, (state, action) => {
             state.loading = false;
             state.data = action.payload;
             state.status = true;
         });
-        builder.addCase(getTweet.rejected, (state) => {
+        builder.addCase(getUserTweet.rejected, (state) => {
             state.loading = false;
             state.status = false;
         });
