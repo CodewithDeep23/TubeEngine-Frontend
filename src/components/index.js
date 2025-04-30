@@ -38,6 +38,9 @@ import GuestMyChannel from './GuestPages/GuestMyChannel.jsx'
 import GuestSubscribers from './GuestPages/GuestSubscribers.jsx'
 import GuestSubscription from './GuestPages/GuestSubscription.jsx'
 import GuestTweet from './GuestPages/GuestTweet.jsx'
+import ChangePassword from './Settings/ChangePassword.jsx'
+import EditChannelInfo from './Settings/EditChannelInfo.jsx'
+import EditPersonalInfo from './Settings/EditPersonalInfo.jsx'
 
 export {
     Button,
@@ -79,5 +82,8 @@ export {
     GuestMyChannel,
     GuestSubscribers,
     GuestSubscription,
-    GuestTweet
+    GuestTweet,
+    ChangePassword,
+    EditChannelInfo,
+    EditPersonalInfo
 }
