@@ -6,6 +6,7 @@ import PageNotFound from './Atoms/PageNotFound'
 import LogoutBtn from './Atoms/LogoutBttn'
 import LoginPopup from './Auth/LoginPopup.jsx'
 import ChannelProfile from './Atoms/ChannelProfile.jsx'
+import UserProfile from './Atoms/UserProfile.jsx'
 import LikesComponents from './Atoms/LikesComponents.jsx'
 import CommentLike from './Comment/CommentLike.jsx'
 import CommentAtom from './Comment/CommentAtom.jsx'
@@ -13,6 +14,9 @@ import EmptyPlaylist from './Playlist/EmptyPlaylist.jsx'
 import MyChannelEmptyPlaylist from './Playlist/MyChannelEmptyPlaylist.jsx'
 import PlaylistVideoAtom from './Playlist/PlaylistVideoAtom.jsx'
 import PlaylistForm from './Playlist/PlaylistForm.jsx'
+import SubscriptionUser from './Subscription/SubscriptionUser.jsx'
+import EmptySubscription from './Subscription/EmptySubscription.jsx'
+import MyChannelEmptySubscribed from './Subscription/MyChannelEmptySubscribed.jsx'
 
 export {
     Button,
@@ -29,5 +33,9 @@ export {
     EmptyPlaylist,
     MyChannelEmptyPlaylist,
     PlaylistVideoAtom,
-    PlaylistForm
+    PlaylistForm,
+    UserProfile,
+    SubscriptionUser,
+    EmptySubscription,
+    MyChannelEmptySubscribed
 }
