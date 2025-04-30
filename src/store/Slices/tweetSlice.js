@@ -59,6 +59,18 @@ export const deleteTweet = createAsyncThunk("tweet/deleteTweet", async ({ tweetI
     }
 });
 
+// get all tweets
+export const getAllTweets = createAsyncThunk("tweet/getAllTweets", async () => {
+    try {
+        const response = await axios.get(`/tweets`);
+        return response.data.data;
+    } catch (error) {
+        toast.error(parseError(error.response.data));
+        console.log(error);
+        throw error;
+    }
+});
+
 const tweetSlice = createSlice({
     name: "tweet",
     initialState,
@@ -116,6 +128,20 @@ const tweetSlice = createSlice({
             state.status = true;
         });
         builder.addCase(deleteTweet.rejected, (state) => {
+            state.loading = false;
+            state.status = false;
+        });
+
+        // get all tweets
+        builder.addCase(getAllTweets.pending, (state) => {
+            state.loading = true;
+        });
+        builder.addCase(getAllTweets.fulfilled, (state, action) => {
+            state.loading = false;
+            state.data = action.payload;
+            state.status = true;
+        });
+        builder.addCase(getAllTweets.rejected, (state) => {
             state.loading = false;
             state.status = false;
         });
