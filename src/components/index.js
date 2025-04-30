@@ -47,6 +47,9 @@ import ChannelVideos from './Video/ChannelVideos.jsx'
 import EmptyVideo from './Video/EmptyVideo.jsx'
 import VideoGrid from './Video/VideoGrid.jsx'
 import VideoList from './Video/VideoList.jsx'
+import Aside from './Aside.jsx'
+import Home from './Home.jsx'
+import Header from './Header/Header.jsx'
 
 export {
     Button,
@@ -97,5 +100,8 @@ export {
     EmptyVideo,
     ChannelVideos,
     VideoGrid,
-    VideoList
+    VideoList,
+    Aside,
+    Home,
+    Header
 }
