@@ -22,6 +22,14 @@ import MyChannelEmptyTweet from './Tweet/MyChannelEmptyTweet.jsx'
 import TweetAtom from './Tweet/TweetAtom.jsx'
 import TweetLike from './Tweet/TweetLike.jsx'
 import MyChannelTweet from './Channel/MyChannelTweet.jsx'
+import UploadVideo from './Dashboard/VideoForm.jsx'
+import UploadingVideo from './Dashboard/UploadingVideo.jsx'
+import UploadSuccess from './Dashboard/UploadSuccess.jsx'
+import StatusAtom from './Dashboard/StatusAtom.jsx'
+import EditVideo from './Dashboard/EditVideo.jsx'
+import DeleteVideo from './Dashboard/DeleteVideo.jsx'
+import ChannelState from './Dashboard/ChannelState.jsx'
+import AdminVideoAtom from './Dashboard/AdminVideoAtom.jsx'
 
 export {
     Button,
@@ -47,5 +55,13 @@ export {
     MyChannelEmptyTweet,
     TweetAtom,
     TweetLike,
-    MyChannelTweet
+    MyChannelTweet,
+    UploadVideo,
+    UploadingVideo,
+    UploadSuccess,
+    StatusAtom,
+    EditVideo,
+    DeleteVideo,
+    ChannelState,
+    AdminVideoAtom
 }
