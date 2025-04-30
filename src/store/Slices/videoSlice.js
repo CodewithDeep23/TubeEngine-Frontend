@@ -22,7 +22,7 @@ const initialState = {
 
 // helper function to build the url with query params
 const buildVideoQueryParams = ({ userId, sortBy, sortType, query, page, limit }) => {
-    const url = new URL(`${BASE_URL}/video`);
+    const url = new URL(`${BASE_URL}/videos`);
 
     if (userId) url.searchParams.set("userId", userId);
     if (query) url.searchParams.set("query", query);
