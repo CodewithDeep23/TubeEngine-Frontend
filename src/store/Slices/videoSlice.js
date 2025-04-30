@@ -157,6 +157,17 @@ export const togglePublishStatus = createAsyncThunk(
     }
 )
 
+// update View
+export const updateView = createAsyncThunk("video/updateView", async (videoId) => {
+    try {
+      const response = await axios.patch(`/videos/view/${videoId}`);
+    } catch (error) {
+      toast.error(parseError(error.response.data));
+      console.log(error);
+      throw error;
+    }
+});
+
 const videoSlice = createSlice({
     name: "video",
     initialState,
@@ -246,6 +257,19 @@ const videoSlice = createSlice({
         builder.addCase(togglePublishStatus.fulfilled, (state, action) => {
             state.publishToggled = !state.publishToggled;
         })
+
+        // update view
+        builder.addCase(updateView.pending, (state) => {
+            state.loading = true;
+        });
+        builder.addCase(updateView.fulfilled, (state, action) => {
+            state.loading = false;
+            state.status = true;
+        });
+        builder.addCase(updateView.rejected, (state) => {
+            state.loading = false;
+            state.status = false;
+        });
     }
 })
 
