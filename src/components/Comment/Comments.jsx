@@ -33,7 +33,7 @@ function Comments({ videoId, ownerAvatar }) {
       toast.warning("Please Enter some message...");
       return;
     }
-    // OPTIMIZEME Optimize my performance by making a very small network request or no request for adding new comment
+    // OPTIMIZEME
     setLocalCommentData(data);
     dispatch(addComment({ videoId, content }));
     inputRef.current.value = "";
