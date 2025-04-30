@@ -30,6 +30,14 @@ import EditVideo from './Dashboard/EditVideo.jsx'
 import DeleteVideo from './Dashboard/DeleteVideo.jsx'
 import ChannelState from './Dashboard/ChannelState.jsx'
 import AdminVideoAtom from './Dashboard/AdminVideoAtom.jsx'
+import GuestAdmin from './GuestPages/GuestAdmin.jsx'
+import GuestComponent from './GuestPages/GuestComponent.jsx'
+import GuestHistory from './GuestPages/GuestHistory.jsx'
+import GuestLikedVideos from './GuestPages/GuestLikedVideos.jsx'
+import GuestMyChannel from './GuestPages/GuestMyChannel.jsx'
+import GuestSubscribers from './GuestPages/GuestSubscribers.jsx'
+import GuestSubscription from './GuestPages/GuestSubscription.jsx'
+import GuestTweet from './GuestPages/GuestTweet.jsx'
 
 export {
     Button,
@@ -63,5 +71,13 @@ export {
     EditVideo,
     DeleteVideo,
     ChannelState,
-    AdminVideoAtom
+    AdminVideoAtom,
+    GuestAdmin,
+    GuestComponent,
+    GuestHistory,
+    GuestLikedVideos,
+    GuestMyChannel,
+    GuestSubscribers,
+    GuestSubscription,
+    GuestTweet
 }
