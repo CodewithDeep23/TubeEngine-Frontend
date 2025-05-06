@@ -38,6 +38,7 @@ function Comments({ videoId, ownerAvatar }) {
     dispatch(addComment({ videoId, content }));
     inputRef.current.value = "";
   }
+  // console.log("local:",localCommentData)
 
   if (!localCommentData)
     return (
