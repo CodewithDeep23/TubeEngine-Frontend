@@ -41,7 +41,7 @@ function App() {
         <div className="flex flex-col items-center justify-center mt-64">
           <img src={loader2} className="logo w-24  " alt="Loading..." />
           <h1 className="text-3xl text-center mt-8 font-semibold">
-            Uchiha is Waiting...
+            Please wait, loading...
           </h1>
           {/* <h1 className="text-xl text-center mt-4">Refresh the page if it takes too long</h1> */}
         </div>
