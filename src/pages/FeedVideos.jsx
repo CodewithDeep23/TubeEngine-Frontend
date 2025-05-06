@@ -1,59 +1,85 @@
-import React, { useEffect, useRef, useCallback } from "react";
+import React, { useEffect, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getAllVideos } from "../store/Slices/videoSlice";
-import { VideoGrid } from "../components";
+import { VideoGrid } from "../components/index";
+import {
+  emptyPagingVideosData,
+  getAllVideosByOption,
+} from "../store/Slices/paginationSlice";
 
-const FeedVideo = () => {
+function FeedVideos({ gridClassName, itemClassName }) {
   const dispatch = useDispatch();
-  const observer = useRef();
-  const pageRef = useRef(1); // Track current page
-  const limit = 8; // You can change this as needed
 
-  const { videos, loading } = useSelector((state) => state.video);
-  const hasNextPage = videos?.pagingInfo?.hasNextPage;
+  const { loading } = useSelector(({ pagingVideos }) => pagingVideos ?? {});
+  const { videos } = useSelector(({ pagingVideos }) => pagingVideos?.data ?? {});
+  const { pagingInfo } = useSelector(({ pagingVideos }) => pagingVideos?.data ?? {});
 
-  const loadVideos = useCallback(() => {
-    dispatch(getAllVideos({ page: pageRef.current, limit }));
-  }, [dispatch]);
+  // const pagingVideos = useSelector((state) => state.pagingVideos) || {};
+  // const loading = pagingVideos.loading || false;
+  // const videos = pagingVideos.data?.videos || [];
+  // const pagingInfo = pagingVideos.data?.pagingInfo || {};
+  console.log("video: ", videos)
+
+  const sectionRef = useRef();
+  const fetchedPageRef = useRef();
+  const pagingInfoRef = useRef(pagingInfo);
+
+  pagingInfoRef.current = pagingInfo;
 
   useEffect(() => {
-    loadVideos();
-  }, [loadVideos]);
+    fetchedPageRef.current = new Set();
 
-  const lastVideoRef = useCallback(
-    (node) => {
-      if (loading) return;
-      if (observer.current) observer.current.disconnect();
+    sectionRef.current = document.getElementById("scrollable_results_screen");
+    sectionRef.current?.scrollTo({ top: 0, behavior: "smooth" });
 
-      observer.current = new IntersectionObserver((entries) => {
-        if (entries[0].isIntersecting && hasNextPage) {
-          pageRef.current += 1;
-          loadVideos();
-        }
-      });
+    let fetchAllVideosPromise = dispatch(
+      getAllVideosByOption({ page: 1, limit: 15 })
+    );
 
-      if (node) observer.current.observe(node);
-    },
-    [loading, hasNextPage, loadVideos]
-  );
+    fetchAllVideosPromise.then(() => {
+      fetchedPageRef.current.add(1);
+    });
+    sectionRef.current?.addEventListener("scroll", handleScroll);
+
+    return () => {
+      sectionRef.current?.removeEventListener("scroll", handleScroll);
+      fetchedPageRef.current.clear();
+      dispatch(emptyPagingVideosData());
+      fetchAllVideosPromise.abort();
+      sectionRef.current?.scrollTo({ top: 0, behavior: "smooth" });
+    };
+  }, []); // [dispatch, location.pathname]
+
+  const handleScroll = () => {
+    const section = sectionRef.current;
+    const scrollHeight = section.scrollHeight;
+    const scrolledValue = section.clientHeight + section.scrollTop;
+
+    if (scrolledValue + 5 > scrollHeight) {
+      const currentPagingInfo = pagingInfoRef.current;
+      if (
+        currentPagingInfo.hasNextPage &&
+        !fetchedPageRef.current?.has(currentPagingInfo.nextPage)
+      ) {
+        fetchedPageRef.current.add(currentPagingInfo.nextPage);
+        dispatch(
+          getAllVideosByOption({
+            page: `${currentPagingInfo.nextPage}`,
+            limit: 15,
+          })
+        );
+      }
+    }
+  };
 
   return (
-    <div className="p-4">
-      {videos?.docs?.length === 0 && !loading && (
-        <p className="text-center text-gray-500">No videos found.</p>
-      )}
-      <VideoGrid
-        videos={videos?.docs}
-        lastVideoRef={lastVideoRef}
-        loading={loading}
-      />
-      {loading && (
-        <div className="text-center mt-4">
-          <span className="text-sm text-gray-400">Loading more videos...</span>
-        </div>
-      )}
-    </div>
+    <VideoGrid
+      videos={videos}
+      loading={loading && !fetchedPageRef.current.has(1)}
+      fetching={loading && videos?.length > 0}
+      gridClassName={gridClassName}
+      itemClassName={itemClassName}
+    />
   );
-};
+}
 
-export default FeedVideo;
+export default FeedVideos;

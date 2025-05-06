@@ -18,7 +18,7 @@ function History() {
     dispatch(clearWatchHistory());
   };
 
-  const videos = useSelector(({ auth }) => auth.userData.getWatchHistory);
+  const videos = useSelector(({ auth }) => auth.userData?.watchHistory);
 
   const isHistoryEmpty = !loading && videos?.length < 1;
 

@@ -49,7 +49,7 @@ function ChannelTweets({ owner = false }) {
       setFocus("tweet");
       return;
     }
-    dispatch(createTweet({ data })).then(() => {
+    dispatch(createTweet({ content: data.tweet })).then(() => {
       getUserTweet(currentUser?._id);
       reset();
     });

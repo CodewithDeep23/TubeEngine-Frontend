@@ -188,8 +188,8 @@ function VideoView({ videos = [], loading = true, fetching = false }) {
                         </p>
                       </div>
                       <p className="mt-2 hidden text-sm md:block">
-                        {video.description.substr(0, 170) +
-                          (video.description.length > 170 ? "..." : "")}
+                        {video.description?.substr(0, 170) +
+                          (video.description?.length > 170 ? "..." : "")}
                       </p>
                     </div>
                   </div>

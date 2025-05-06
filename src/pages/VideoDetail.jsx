@@ -3,9 +3,9 @@ import { useNavigate, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import {
-    emptyVideoState,
-    getVideoById,
-    updateView,
+  emptyVideoState,
+  getVideoById,
+  updateView,
 } from "../store/Slices/videoSlice";
 import {
   Comments,
@@ -33,7 +33,7 @@ function VideoDetail() {
   const playerRef = useRef(null);
 
   const { status: authStatus } = useSelector(({ auth }) => auth);
-  const { loading, status, data: video } = useSelector(({ video }) => video);
+  const { loading, status, video: video } = useSelector(({ video }) => video);
 
   console.log("videodata", video);
 
@@ -45,7 +45,7 @@ function VideoDetail() {
 
   useEffect(() => {
     if (!videoId) return;
-    dispatch(getVideoById(videoId));
+    dispatch(getVideoById({videoId}));
     dispatch(updateView(videoId));
     return () => dispatch(emptyVideoState());
   }, [videoId, navigate]);
@@ -387,6 +387,7 @@ function VideoDetail() {
                       Save
                     </button>
                     {/* save to playlist popup */}
+                    {/* OPTIMIZEME: FIX glitch and improve user experience */}
                     {authStatus && (
                       <div className="absolute right-0 top-full z-10 hidden w-64 overflow-hidden rounded-lg dark:bg-[#121212] bg-zinc-300 drop-shadow-sm p-4 shadow shadow-slate-50/30 hover:block peer-focus:block">
                         <h3 className="mb-4 text-center text-lg font-semibold">

@@ -19,26 +19,13 @@ function Support() {
               <li className="flex items-center">
                 <span className="w-9 h-9 rounded-full mr-4">{icons.link}</span>
                 <div className="h-full">
-                  <h2 className="text-lg font-bold my-0">Twitter</h2>
-                  <a
-                    href=" https://x.com/Chandanpolai26?t=lLvLSTy_wm4IZkGItPScZw&s=08"
-                    target="_blank"
-                    className="text-blue-500 text-sm hover:text-blue-400 "
-                  >
-                    /chandan polai
-                  </a>
-                </div>
-              </li>
-              <li className="flex items-center">
-                <span className="w-9 h-9 rounded-full mr-4">{icons.link}</span>
-                <div className="h-full">
                   <h2 className="text-lg font-bold my-0">LikedIn</h2>
                   <a
-                    href="https://www.linkedin.com/in/chandan-polai-835063270/"
+                    href="https://www.linkedin.com/in/deepankar-singh-a35b14296/"
                     target="_blank"
                     className="text-blue-500 text-sm hover:text-blue-400 "
                   >
-                    /chandan polai
+                    /deepankar-singh
                   </a>
                 </div>
               </li>
@@ -47,26 +34,12 @@ function Support() {
                 <div className="h-full">
                   <h2 className="text-lg font-bold my-0">GitHub</h2>
                   <a
-                    href="https://github.com/ChandanPolai"
+                    href="https://github.com/CodewithDeep23"
                     target="_blank"
                     className="text-blue-500 text-sm hover:text-blue-400 "
                   >
-                    /chandan polai
+                    /deepankar-singh
                   </a>
-                </div>
-              </li>
-              <li className="flex items-center">
-                <span className="w-9 h-9 rounded-full mr-4">{icons.link}</span>
-                <div className="h-full">
-                  <h2 className="text-lg font-bold my-0">Youtube</h2>
-                  <a
-                    href="https://www.youtube.com/@tgrpolai"
-                    target="_blank"
-                    className="text-blue-500 text-sm hover:text-blue-400 "
-                  >
-                    @tgrpolai
-                  </a>
-                  {/* <p className="text-blue-500 text-sm hover:text-blue-400 ">@tgrpolai</p> */}
                 </div>
               </li>
             </ul>

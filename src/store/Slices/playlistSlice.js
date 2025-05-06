@@ -54,6 +54,7 @@ export const addVideoToPlaylist = createAsyncThunk("playlist/addVideoToPlaylist"
     async ({ playlistId, videoId }) => {
         try {
             const response = await axios.patch(`/playlists/add/${videoId}/${playlistId}`);
+            console.log("response: ", response);
             toast.success(response.data.message);
             return response.data.data;
         } catch (error) {
@@ -213,7 +214,20 @@ const playlistSlice = createSlice({
         builder.addCase(getCurrentPlaylists.rejected, (state) => {
             state.loading = false;
             state.status = false;
-        });  
+        }); 
+        
+        builder.addCase(addVideoToPlaylist.pending, (state) => {
+            state.loading = true;
+          });
+          builder.addCase(addVideoToPlaylist.fulfilled, (state, action) => {
+            state.loading = false;
+            state.data = action.payload;
+            state.status = true;
+          });
+          builder.addCase(addVideoToPlaylist.rejected, (state) => {
+            state.loading = false;
+            state.status = false;
+          });
     },
 });
 

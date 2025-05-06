@@ -37,7 +37,7 @@ function FeedTweets({ owner = false }) {
       setFocus("tweet");
       return;
     }
-    dispatch(createTweet({ data })).then(() => {
+    dispatch(createTweet({ content: data.tweet })).then(() => {
       dispatch(getAllTweets());
       reset();
     });

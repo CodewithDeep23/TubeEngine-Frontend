@@ -11,9 +11,10 @@ const initialState = {
 
 // create tweet
 export const createTweet = createAsyncThunk("tweet/createTweet", 
-    async ({ data }) => {
+    async (data) => {
     try {
         const response = await axios.post(`/tweets`, data);
+        console.log(response)
         return response.data.data;
     } catch (error) {
         toast.error(parseError(error.response.data));

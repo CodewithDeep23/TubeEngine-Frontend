@@ -25,7 +25,8 @@ function ChannelVideos({ owner = false }) {
     }
     if (!userId) return;
     dispatch(getAllVideos(userId)).then((res) => {
-      setVideos(res.payload);
+      setVideos(res.payload?.videos || []);
+      // console.log('res.payload.docs', res.payload.videos)
       setIsLoading(false);
     });
   }, [username, userId]);

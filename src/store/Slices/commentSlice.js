@@ -13,7 +13,7 @@ export const getVideoComments = createAsyncThunk("comment/getVideoComments",
     async (videoId) => {
         try {
             const response = await axios.get(`/comments/get/${videoId}`);
-            return response.data.data;
+            return response.data.data.docs;
         } catch (error) {
             toast.error(parseError(error.response.data));
             console.log(error);
@@ -68,11 +68,15 @@ export const deleteComment = createAsyncThunk("comment/deleteComment",
 const commentSlice = createSlice({
     name: "comment",
     initialState,
+    reducers: {
+        cleanUpComments: (state) => {
+            state.comments = [];
+        },
+    },
     extraReducers: (builder) => {
         // get Video Comments
         builder.addCase(getVideoComments.pending, (state) => {
             state.loading = true;
-            state.data = [];
         });
         builder.addCase(getVideoComments.fulfilled, (state, action) => {
             state.loading = false;
@@ -126,4 +130,5 @@ const commentSlice = createSlice({
     },
 });
 
+export const { cleanUpComments } = commentSlice.actions;
 export default commentSlice.reducer;

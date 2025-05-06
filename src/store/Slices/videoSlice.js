@@ -43,6 +43,7 @@ export const getAllVideos = createAsyncThunk(
             const url = buildVideoQueryParams({ userId, sortBy, sortType, query, page, limit });
 
             const response = await axios.get(url.toString());
+            // console.log(response.data.data);
             return response.data.data;  // Assumes { videos, pagingInfo }
         } catch (error) {
             const errMsg = error?.response?.data?.error || "Failed to fetch videos";
@@ -91,6 +92,7 @@ export const getVideoById = createAsyncThunk(
     async ({ videoId }) => {
         try {
             const response = await axios.get(`/videos/${videoId}`);
+            console.log("response:", response)
             return response.data.data;
         } catch (error) {
             toast.error(parseError(error.response.data));
@@ -145,7 +147,7 @@ export const deleteVideo = createAsyncThunk(
 // toggle publish status
 export const togglePublishStatus = createAsyncThunk(
     "video/togglePublishStatus",
-    async ({ videoId }) => {
+    async (videoId) => {
         try {
             const response = await axios.patch(`/videos/toggle/publish/${videoId}`);
             toast.success(response.data.message);
@@ -173,13 +175,9 @@ const videoSlice = createSlice({
     initialState,
     reducers: {
         emptyVideoState: (state, action) => {
-            state.videos = {
-                docs: [],
-                pagingInfo: {
-                    hasNextPage: false
-                }
-            };
+            console.log("state", state.video)
             state.video = null;
+            console.log("state", state.video)
         },
     },
     extraReducers: (builder) => {

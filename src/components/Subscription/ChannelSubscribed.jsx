@@ -34,7 +34,6 @@ function ChannelSubscribed({ owner = false, isSubscribers = false }) {
       dispatch(getUserChannelSubscribers(currentUser?._id));
       return;
     }
-    if (owner) channelId = currentUser?._id;
     if (!channelId) return;
     dispatch(getSubscribedChannels(channelId));
   }, [username, channelId, currentUser]);

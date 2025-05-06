@@ -33,6 +33,7 @@ export const getUserChannelSubscribers = createAsyncThunk(
             const response = await axios.get(
                 `subscriptions/u/${channelId}`
             );
+            console.log("Subscribed channels fetched: ", response.data.data);
             return response.data.data;
         } catch (error) {
             toast.error(parseError(error.response.data));

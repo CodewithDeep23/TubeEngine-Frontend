@@ -40,7 +40,7 @@ function TweetAtom({ tweet, owner, authStatus }) {
       toast.error("Maximum 500 characters are allowed");
       return;
     }
-    dispatch(updateTweet({ tweetId: tweet._id, data: { tweet: content } }));
+    dispatch(updateTweet({ tweetId: tweet._id, data: { content: content } }));
     setIsEditing(false);
   }
 

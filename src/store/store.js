@@ -10,6 +10,7 @@ import playlistSlice from './Slices/playlistSlice';
 import tweetSlice from './Slices/tweetSlice';
 import dashboardSlice from './Slices/dashboardSlice';
 import healthCheckSlice from './Slices/healthcheckSlice';
+import paginationSlice from './Slices/paginationSlice'
 
 export const store = configureStore({
     reducer: {
@@ -24,5 +25,6 @@ export const store = configureStore({
         tweet: tweetSlice,
         dashboard: dashboardSlice,
         healthCheck: healthCheckSlice,
+        pagingVideos: paginationSlice
     }
 })
