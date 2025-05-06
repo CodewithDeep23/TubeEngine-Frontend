@@ -4,8 +4,8 @@ import { icons } from "../../assets/icons";
 function GuestHistory() {
   return (
     <GuestComponent
-      title="Keep track of what you watch"
-      subtitle="Watch history isn't viewable when signed out."
+      title="Rewind Your Viewing Journey"
+      subtitle="Track your watched content by signing in — your history, your way."
       icon={icons.history}
     />
   );

@@ -5,8 +5,8 @@ import { icons } from "../../assets/icons";
 function GuestLikedVideos() {
   return (
     <GuestComponent
-      title="Save your favorite moments"
-      subtitle=" Discover new videos you'll love by signing in and liking them."
+      title="Your Personal Playlist Starts Here"
+      subtitle="Like what you see? Sign in to save and revisit your favorite videos anytime."
       icon={<span className="w-full h-full flex items-center p-4 pb-5">{icons.Like}</span>}
     />
   );

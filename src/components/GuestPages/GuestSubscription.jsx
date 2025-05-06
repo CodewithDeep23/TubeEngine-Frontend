@@ -5,8 +5,8 @@ import { icons } from "../../assets/icons";
 function GuestSubscription() {
   return (
     <GuestComponent
-      title="Subscribe to Stay Updated"
-      subtitle="Sign in to Sign in to follow creators and see updates from your favorite channels."
+      title="Follow What Matters to You"
+      subtitle="Stay close to creators you love — sign in and subscribe for updates."
       icon={icons.Subscription}
     />
   );
