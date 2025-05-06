@@ -30,6 +30,7 @@ import {
   GuestSubscribers,
   GuestTweets,
   PageNotFound,
+  GuestComponent,
 } from "./components/index.js";
 
 import FeedVideos from "./pages/FeedVideos.jsx";
@@ -41,6 +42,7 @@ import Dashboard from "./pages/Dashboard.jsx";
 import FeedTweets from "./pages/FeedTweets.jsx";
 import Support from "./pages/Support.jsx";
 import SearchResult from "./pages/SearchResult.jsx";
+import GuestVideo from "./components/GuestPages/GuestVideo.jsx";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -142,8 +144,14 @@ const router = createBrowserRouter(
         </Route>
 
         {/* Video Watching */}
-        <Route path="/watch/:videoId" element={<VideoDetail />} />
-
+        <Route 
+        path="/watch/:videoId" 
+        element={
+          <AuthLayout authentication guestComponent={<GuestVideo />}>
+            <VideoDetail />
+          </AuthLayout>
+        } />
+        
         {/* Admin Dashboard */}
         <Route
           path="/admin/dashboard"
