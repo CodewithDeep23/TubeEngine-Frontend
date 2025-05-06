@@ -34,4 +34,4 @@ const Input = React.forwardRef(function Input(
   );
 });
 
-export default React.forwardRef(Input);
+export default Input;
