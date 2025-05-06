@@ -17,11 +17,16 @@ import { useParams } from "react-router-dom";
 function ChannelSubscribed({ owner = false, isSubscribers = false }) {
   const dispatch = useDispatch();
   let { username } = useParams();
-  let channelId = useSelector((state) => state.user.userData?._id);
+  // let channelId = useSelector((state) => state.user.userData?._id);
   let currentUser = useSelector((state) => state.auth.userData);
+  const userChannelId = useSelector((state) => state.user.userData?._id);
+  const channelId = owner ? currentUser?._id : userChannelId;
 
   const [subscribedFiltered, setSubscribedFiltered] = useState(null);
-  let { data, loading, status } = useSelector((state) => state.subscription);
+  let { channelSubscribers, mySubscriptions, loading, status } = useSelector((state) => state.subscription);
+  // console.log("data", loading)
+  // console.log("channelSubscribers", channelSubscribers)
+  // console.log("mySubscriptions", mySubscriptions)
 
   useEffect(() => {
     if (isSubscribers) {
@@ -34,7 +39,7 @@ function ChannelSubscribed({ owner = false, isSubscribers = false }) {
     dispatch(getSubscribedChannels(channelId));
   }, [username, channelId, currentUser]);
 
-  if (!isSubscribers && (loading || !channelId)) {
+  if (!isSubscribers && (!mySubscriptions || !channelId)) {
     return (
       <div className="flex flex-col gap-y-4 pt-1">
         <div className="flex flex-col gap-y-4 pt-4">
