@@ -4,7 +4,9 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
+    "project": "concurrently \"npm run server\" \"npm run client\"",
+    "client": "vite",
+    "server": "cd ../TubeEngine && npm run dev",
     "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview"
@@ -13,6 +15,7 @@
     "@reduxjs/toolkit": "^2.7.0",
     "@vidstack/react": "^1.12.13",
     "axios": "^1.9.0",
+    "concurrently": "^9.1.2",
     "hls.js": "^1.0.3-0.canary.7275",
     "maverick.js": "^0.43.2",
     "react": "^19.0.0",
