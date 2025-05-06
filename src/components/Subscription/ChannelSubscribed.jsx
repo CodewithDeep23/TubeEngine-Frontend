@@ -94,24 +94,30 @@ function ChannelSubscribed({ owner = false, isSubscribers = false }) {
     );
   }
 
-  let subscribed = subscribedFiltered || data;
+  // let subscribed = subscribedFiltered || channelSubscribers;
+  let subscribed = isSubscribers
+  ? (subscribedFiltered || channelSubscribers)
+  : (subscribedFiltered || mySubscriptions);
+  console.log("subscribed: ", subscribed)
 
-  if ((!status && !loading) || !subscribed)
+  // if ((!status && !mySubscriptions) || !subscribed)
+  if(loading)
     return (
       <div className="flex w-full h-screen flex-col gap-y-4 px-16 py-4 rounded dark:bg-slate-100/10 bg-zinc-300 animate-pulse"></div>
     );
 
   function handleUserInput(input) {
-    if (!input) setSubscribedFiltered(data);
+    if (!input) setSubscribedFiltered(channelSubscribers);
     else {
-      const filteredData = data.filter((user) =>
+      const filteredData = channelSubscribers.filter((user) =>
         user.fullName.toLowerCase().includes(input.toLowerCase())
       );
+      // console.log("filetedata", filteredData)
       setSubscribedFiltered(filteredData);
     }
   }
 
-  return data?.length > 0 ? (
+  return channelSubscribers?.length > 0 ? (
     <ul
       className={`flex w-full flex-col gap-y-4 ${
         isSubscribers ? "px-8 py-8 sm:px-16 sm:py-12" : "py-4"
